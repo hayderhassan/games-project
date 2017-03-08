@@ -25,7 +25,7 @@ class Game:
         #self.back_to_home = False
         #self.home_screen = False
         #self.game_over_screen = False
-        #self.score = 0
+        self.score = 0
         #self.lives = 3
 
     def load_data(self):
@@ -93,15 +93,27 @@ class Game:
         self.screen.fill(BG_COLOUR)
 
         # These are just examples of how to draw text and add buttons:
-        self.draw_text(TITLE, 30, RED, 300, 200)
-        self.draw_button("Play", 300, 400)
+        self.draw_text(TITLE, 30, BLACK, 400, 100)
+        self.draw_text("Use the arrow keys to move", 20, BLACK, 400, 200)
+        self.draw_button("Start", 300, 340)
+        self.draw_button("Exit", 300, 400)
 
         # *after* drawing everything, flip the display - nothing else should go below this line
         pg.display.flip()
 
     def show_go_screen(self):
         # game over/continue
-        pass
+        print("show game over screen")
+        g.events()
+        self.screen.fill(BG_COLOUR)
+
+        self.draw_text("Game Over", 30, BLACK, 400, 100)
+        self.draw_text("Score: " + str(self.score), 20, BLACK, 400, 200)
+        self.draw_button("Play Again", 300, 280)
+        self.draw_button("Menu", 300, 340)
+        self.draw_button("Exit", 300, 400)
+
+        pg.display.flip()
 
     def draw_text(self, text, size, colour, x, y):
         font = pg.font.Font(self.title_font, size)
@@ -119,6 +131,7 @@ g = Game()
 print("finish initialising game and show start screen")
 while g.running:
     g.show_start_screen()
+    #g.show_go_screen()
 
 #while g.running:
 #    g.new()
