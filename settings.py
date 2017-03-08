@@ -5,6 +5,7 @@ HEIGHT = 500
 FPS = 60
 FONT_NAME = "arial"
 SPRITESHEET = "spritesheet.png"
+BUTTON_IMAGES = "yellow_buttons.png"
 
 # define colors
 BLACK = (0, 0, 0)

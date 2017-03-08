@@ -20,6 +20,7 @@ class Game:
         pg.display.set_caption(TITLE)
         self.clock = pg.time.Clock()
         self.running = True
+        self.font_name = pg.font.match_font(FONT_NAME)
         self.load_data()
         #self.back_to_home = False
         #self.home_screen = False
@@ -33,11 +34,20 @@ class Game:
 
         # Load images from img folder
         img_dir = path.join(self.dir, "img")
-        self.spritesheet = Spritesheet(path.join(img_dir, SPRITESHEET))
+        #self.spritesheet = Spritesheet(path.join(img_dir, SPRITESHEET))
+
+        # Load buttons
+        self.buttons = Spritesheet(path.join(img_dir, BUTTON_IMAGES))
+        self.yellowButton1 = self.buttons.get_image(0, 188, 190, 49, 1)
+        self.yellowButton1.set_colorkey(BLACK)
+
+        # Load fonts
+        font_dir = path.join(self.dir, "fonts")
+        self.title_font = path.join(font_dir, "font1.ttf")
 
         # Load sounds from sound folder
         self.sound_dir = path.join(self.dir, "sound")
-        self.an_example_sound = pg.mixer.Sound(path.join(self.sound_dir, "sound_example.wav"))
+        #self.an_example_sound = pg.mixer.Sound(path.join(self.sound_dir, "sound_example.wav"))
 
     def new(self):
         # start a new game
@@ -73,7 +83,7 @@ class Game:
         self.screen.fill(BLACK)
         #draw sprites onto screen:
         #self.all_sprites.draw(self.screen)
-        # *after* drawing everything, flip the display
+        # *after* drawing everything, flip the display - nothing else should go below this line
         pg.display.flip()
 
     def show_start_screen(self):
@@ -81,11 +91,28 @@ class Game:
         print("show start screen")
         g.events()
         self.screen.fill(BG_COLOUR)
+
+        # These are just examples of how to draw text and add buttons:
+        self.draw_text(TITLE, 30, RED, 300, 200)
+        self.draw_button("Play", 300, 400)
+
+        # *after* drawing everything, flip the display - nothing else should go below this line
         pg.display.flip()
 
     def show_go_screen(self):
         # game over/continue
         pass
+
+    def draw_text(self, text, size, colour, x, y):
+        font = pg.font.Font(self.title_font, size)
+        text_surface = font.render(text, True, colour)
+        text_rect = text_surface.get_rect()
+        text_rect.midtop = (x, y)
+        self.screen.blit(text_surface, text_rect)
+
+    def draw_button(self, text, x, y):
+        self.screen.blit(self.yellowButton1, (x, y))
+        self.draw_text(text, 22, BLACK, x + 90, y + 10)
 
 print("start")
 g = Game()
