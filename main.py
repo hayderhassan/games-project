@@ -122,8 +122,6 @@ class Game:
         text_rect.midtop = (x, y)
         self.screen.blit(text_surface, text_rect)
 
-    #def draw_image(self, filepath, x, y):
-
     def draw_button(self, text, x, y):
         self.screen.blit(self.yellowButton1, (x, y))
         self.draw_text(text, 22, BLACK, x + 90, y + 10)
