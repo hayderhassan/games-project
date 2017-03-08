@@ -20,7 +20,7 @@ class Game:
         pg.display.set_caption(TITLE)
         self.clock = pg.time.Clock()
         self.running = True
-        #self.load_data()
+        self.load_data()
         #self.back_to_home = False
         #self.home_screen = False
         #self.game_over_screen = False
