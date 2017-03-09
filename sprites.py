@@ -1,5 +1,5 @@
 # Sprite classes for platform game (main.py)
-
+# example
 from __future__ import division
 import pygame as pg
 import random
