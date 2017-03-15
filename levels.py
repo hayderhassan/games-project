@@ -53,8 +53,6 @@ class Level():
             platform.rect.x += shift_x
 
 
-
-
 # Create platforms for the level
 class Level_01(Level):
 
