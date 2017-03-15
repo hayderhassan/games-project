@@ -130,21 +130,19 @@ class Game:
             self.playing = False
 
         # If the player gets near the right side, shift the world left (-x)
-        if self.player.rect.right >= 500:
-            diff = self.player.rect.right - 500
-            print("player.rect.right: " + str(self.player.rect.right))
-            print("diff: " + str(diff))
-            print("player.vel.x: " + str(self.player.vel.x))
-            self.player.rect.right = 500
+        if self.player.pos.x > 400 and abs(self.player.vel.x) > 0:
+            diff = self.player.pos.x - 400
+            self.player.pos.x = 400
             self.current_level.shift_world(-diff)
 
 
         # If the player gets near the left side, shift the world right (+x)
-        if self.player.rect.left <= 120:
-            diff = 120 - self.player.rect.left
-            self.player.rect.left = 120
+        if self.player.pos.x <= 120 and abs(self.player.vel.x) > 0:
+            diff = 120 - self.player.pos.x
+            self.player.pos.x = 120
             self.current_level.shift_world(diff)
 
+#        self.current_level.update()
 
     def events(self):
        # print("events()")
@@ -184,7 +182,7 @@ class Game:
         #self.screen.fill(BG_COLOUR)
         #self.current_level.all_sprites.draw(self.screen)
         #draw sprites onto screen:
-        #self.all_sprites.draw(self.screen)
+ #       self.all_sprites.draw(self.screen)
 
         # *after* drawing everything, flip the display - nothing else should go below this line
         pg.display.flip()
