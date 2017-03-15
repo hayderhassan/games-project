@@ -131,16 +131,16 @@ class Game:
 
         # If the player gets near the right side, shift the world left (-x)
         if self.player.pos.x > 400 and abs(self.player.vel.x) > 0:
-            diff = self.player.pos.x - 400
+            shift = self.player.pos.x - 400
             self.player.pos.x = 400
-            self.current_level.shift_world(-diff)
+            self.current_level.shift_world(-shift)
 
 
         # If the player gets near the left side, shift the world right (+x)
         if self.player.pos.x <= 120 and abs(self.player.vel.x) > 0:
-            diff = 120 - self.player.pos.x
+            shift = 120 - self.player.pos.x
             self.player.pos.x = 120
-            self.current_level.shift_world(diff)
+            self.current_level.shift_world(shift)
 
 #        self.current_level.update()
 
