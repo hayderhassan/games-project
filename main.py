@@ -172,17 +172,19 @@ class Game:
             self.player.pos.x = 300
             self.current_level.shift_world(shift)
 
-        if 5 == 5:
-            # If the player gets to the end of the level, go to the next level
-            current_position = self.player.rect.x + self.current_level.world_shift
-            print("Current position: " + str(current_position))
-            if current_position < self.current_level.level_limit:
-                self.player.rect.x = 120
-                self.current_level = Level_2(g, self.player, self.all_sprites)
-#                if self.current_level_no < len(self.level_list) - 1:
-#                    self.current_level_no += 1
-#                    self.current_level = self.level_list[self.current_level_no]
-#                    #self.player.level = self.current_level
+
+        # If the player gets to the end of the level, go to the next level
+        current_position = self.player.rect.x + self.current_level.world_shift
+        print("Current position: " + str(current_position))
+        if current_position < self.current_level.level_limit:
+            self.player.rect.x = 120
+            for platform in self.platforms:
+                platform.kill()
+            self.current_level = Level_2(g, self.player, self.all_sprites)
+#           if self.current_level_no < len(self.level_list) - 1:
+#               self.current_level_no += 1
+#               self.current_level = self.level_list[self.current_level_no]
+#               #self.player.level = self.current_level
 
     def events(self):
        # print("events()")
