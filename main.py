@@ -57,9 +57,11 @@ class Game:
         self.all_sprites = pg.sprite.LayeredUpdates()
         self.platforms = pg.sprite.Group()
         self.player = Player(self)
+        self.enemy = Enemy(self)
         self.all_sprites.add(self.player)
+        self.all_sprites.add(self.enemy)
 
-        self.current_level = Level_01(g, self.player, self.all_sprites)
+        self.current_level = Level_01(g, self.player, self.all_sprites, self.enemy)
 
 
         self.run()
@@ -143,6 +145,9 @@ class Game:
             self.current_level.shift_world(shift)
 
 #        self.current_level.update()
+
+        # If the player hits an enemy, take away 1 life (and give immunity for 2 seconds)
+        #if self.player.pos.x <= 123 and
 
     def events(self):
        # print("events()")

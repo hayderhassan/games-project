@@ -8,11 +8,10 @@ from sprites import *
 from os import path
 
 class Level():
-    def __init__(self, game, player, sprites):
+    def __init__(self, game, player, sprites, enemy):
         # Lists of sprites used in all levels
         self.all_sprites = sprites
         self.game = game
-
         # Background image
         self.background = None
 
@@ -21,6 +20,7 @@ class Level():
         self.level_limit = -1000
 
         self.player = player
+        self.enemy = enemy
        # print("levels.init()")
 
 
@@ -56,11 +56,11 @@ class Level():
 # Create platforms for the level
 class Level_01(Level):
 
-    def __init__(self, game, player, sprites):
+    def __init__(self, game, player, sprites, enemy):
         # Create Level 1
 
         # Call the parent constructor
-        Level.__init__(self, game, player, sprites)
+        Level.__init__(self, game, player, sprites, enemy)
         print("level01.init()")
 
         self.dir = path.dirname(__file__)
@@ -73,4 +73,5 @@ class Level_01(Level):
             Platform(self.game, platform[0], platform[1], platform[2])
 
 
-
+        for Enemy in LEVEL_ONE:
+            Enemy(self.game, enemy[0], enemy[1])

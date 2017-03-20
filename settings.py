@@ -10,6 +10,7 @@ BUTTON_IMAGES = "yellow_buttons.png"
 KEYS = "arrows.png"
 PLATFORMS = "sprites_Tiles.png"
 CHARACTER = "character_sprites.png"
+ENEMY = "character_sprites.png"
 
 BACKGROUND1_IMG = "background_01.png"
 BACKGROUND1 = ([0, 0, 2100, 600])
@@ -30,6 +31,13 @@ WALK_RIGHT2 = ([917, 166, 120, 161])
 WALK_LEFT1 = ([1039, 166, 120, 162])
 WALK_LEFT2 = ([1039, 330, 120, 162])
 JUMP = ([135, 1007, 133, 163])
+
+ENEMY_STANDING1 = ([])
+ENEMY_STANDING2 = ([])
+ENEMY_WALK_RIGHT1 = ([])
+ENEMY_WALK_RIGHT2 = ([])
+ENEMY_WALK_LEFT1 = ([])
+ENEMY_WALK_LEFT2 = ([])
 
 # Levels
 # Array with type of platform, and x, y location of the platform.
@@ -59,6 +67,7 @@ PLAYER_JUMP = 22
 # Game settings
 PLAYER_LAYER = 2
 PLATFORM_LAYER = 1
+ENEMY_LAYER = 2
 
 
 # define colors

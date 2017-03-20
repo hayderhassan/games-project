@@ -155,4 +155,16 @@ class Platform(pg.sprite.Sprite):
 
 class Enemy(pg.sprite.Sprite):
     #enemy sprite
-    pass
+    def __init__(self, game):
+        self._layer = ENEMY_LAYER
+        self.groups = game.all_sprites
+        pg.sprite.Sprite.__init__(self, self.groups)
+        self.game = game
+        self.walking = False
+        self.jumping = False
+        self.current_frame = 0
+        self.last_update = 0
+        self.load_images()
+        self.image = self.standing_frame[0]
+        self.rect = self.image.get_rect()
+        pass
