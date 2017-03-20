@@ -11,6 +11,8 @@ KEYS = "arrows.png"
 PLATFORMS = "sprites_Tiles.png"
 CHARACTER = "character_sprites.png"
 
+YELLOW_BUTTON1 = ([0, 188, 190, 49])
+
 BACKGROUND1_IMG = "background_01.png"
 BACKGROUND1 = ([0, 0, 2100, 600])
 
@@ -32,6 +34,8 @@ WALK_LEFT2 = ([1039, 330, 120, 162])
 JUMP = ([135, 1007, 133, 163])
 
 # Levels
+
+# Platforms for level 1
 # Array with type of platform, and x, y location of the platform.
 LEVEL_ONE = ([(GRASS_HALF_LEFT, ((WIDTH / 2) - 100), (HEIGHT / 2)),
               (GRASS_LEFT, ((WIDTH / 2) - 36), (HEIGHT - 128)),
@@ -47,8 +51,27 @@ LEVEL_ONE = ([(GRASS_HALF_LEFT, ((WIDTH / 2) - 100), (HEIGHT / 2)),
               (GRASS_HALF_RIGHT, ((WIDTH / 2) + 864), (HEIGHT / 2) - 40)
               ])
 
+# Ground for level 1
 for i in range(0, WIDTH * 2, 64):
     LEVEL_ONE.append((GRASS_CENTRE, i, HEIGHT - 64))
+
+for i in range((WIDTH*2) + 70, WIDTH*4, 140):
+    LEVEL_ONE.append((GRASS_CENTRE, i, HEIGHT - 64))
+
+for i in range((WIDTH*4) + 70, WIDTH*6, 64):
+    LEVEL_ONE.append((GRASS_CENTRE, i, HEIGHT - 64))
+
+
+# Platforms for level 2
+
+LEVEL_TWO = ([(GRASS_HALF_LEFT, ((WIDTH / 2) - 100), (HEIGHT / 2)),
+              (GRASS_HALF_CENTRE, ((WIDTH / 2) - 36), (HEIGHT / 2)),
+              (GRASS_HALF_RIGHT, ((WIDTH / 2) + 28), (HEIGHT / 2))
+              ])
+
+# Ground for level 2
+for i in range(0, WIDTH, 64):
+    LEVEL_TWO.append((GRASS_CENTRE, i, HEIGHT - 64))
 
 # Player properties
 PLAYER_ACC = 0.5
@@ -72,3 +95,4 @@ BLUE = (0, 0, 255)
 YELLOW = (255, 255, 0)
 LIGHT_BLUE = (0, 155, 155)
 BG_COLOUR = LIGHT_BLUE
+
