@@ -52,16 +52,20 @@ class Level():
         for platform in self.all_sprites:
             platform.rect.x += shift_x
 
+        if shift_x < 0:
+            self.game.score += 1
+
+
 
 # Create platforms for the level
-class Level_01(Level):
+class Level_1(Level):
 
     def __init__(self, game, player, sprites):
         # Create Level 1
 
         # Call the parent constructor
         Level.__init__(self, game, player, sprites)
-        print("level01.init()")
+        print("level_1.init()")
 
         self.dir = path.dirname(__file__)
         img_dir = path.join(self.dir, "img")
@@ -72,5 +76,21 @@ class Level_01(Level):
         for platform in LEVEL_ONE:
             Platform(self.game, platform[0], platform[1], platform[2])
 
+class Level_2(Level):
 
+    def __init__(self, game, player, sprites):
+        # Create Level 2
+
+        # Call the parent constructor
+        Level.__init__(self, game, player, sprites)
+        print("level_2.init()")
+
+        self.dir = path.dirname(__file__)
+        img_dir = path.join(self.dir, "img")
+        self.background = pg.image.load(path.join(img_dir, "background_01.png"))
+        self.background.set_colorkey(WHITE)
+        self.level_limit = -2500
+
+        for platform in LEVEL_TWO:
+            Platform(self.game, platform[0], platform[1], platform[2])
 
