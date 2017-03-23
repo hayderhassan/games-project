@@ -1,6 +1,12 @@
 # Main file to run game
 
 from __future__ import division
+
+try:
+    import simplegui
+except ImportError:
+    import SimpleGUICS2Pygame.simpleguics2pygame as simplegui
+
 import pygame as pg
 import random
 import os
@@ -8,7 +14,6 @@ from settings import *
 from sprites import *
 from levels import *
 from os import path
-from vectors import *
 
 os.environ['SDL_VIDEO_CENTERED'] = '1'
 
@@ -29,6 +34,7 @@ class Game:
         self.game_over_screen = False
         self.score = 0
         self.lives = 3
+        self.level_list = []
 
     #    self.current_level_no = 0
 
@@ -69,16 +75,16 @@ class Game:
         self.all_sprites.add(self.player)
 
         # Create all the levels
-#        self.level_list = []
-#        self.level_list.append((Level_1(g, self.player, self.all_sprites)))
-#        self.level_list.append((Level_2(g, self.player, self.all_sprites)))
+ #       self.level_list.append((Level_1(g, self.player, self.all_sprites)))
+ #       self.level_list.append((Level_2(g, self.player, self.all_sprites)))
 
         # Set the current level
-#        self.current_level_no = 1
-#        self.current_level = self.level_list[self.current_level_no]
-#        print("current_level_no = " + str(self.current_level_no))
-#        print("level_list = " + str(self.level_list))
-
+        # self.current_level_no = 1
+        # self.current_level = self.level_list[self.current_level_no]
+        # print("current_level_no = " + str(self.current_level_no))
+        # print("level_list = " + str(self.level_list))
+        #
+        # print("current level = " + str(self.current_level))
 
 
         self.current_level = Level_1(g, self.player, self.all_sprites)
