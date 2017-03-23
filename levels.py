@@ -52,6 +52,9 @@ class Level():
         for platform in self.all_sprites:
             platform.rect.x += shift_x
 
+        for coin in self.all_sprites:
+            coin.rect.x += shift_x
+
         if shift_x < 0:
             self.game.score += 1
 
@@ -78,6 +81,9 @@ class Level_1(Level):
 
         for platform in LEVEL_ONE:
             Platform(self.game, platform[0], platform[1], platform[2])
+
+        Coin(self.game, "coin.png", (800 / 2) + 232, (500 / 2) + 10)
+        Coin(self.game, "coin.png", (800 / 2) + 132, (500 / 2) + 10)
      #       level_one_list.append(platform)
 
 class Level_2(Level):

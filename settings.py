@@ -10,8 +10,10 @@ BUTTON_IMAGES = "yellow_buttons.png"
 KEYS = "arrows.png"
 PLATFORMS = "sprites_Tiles.png"
 CHARACTER = "character_sprites.png"
+COIN = "coin.png"
 
 YELLOW_BUTTON1 = ([0, 188, 190, 49])
+COIN_ICON = ([0, 0, 272, 277])
 
 BACKGROUND1_IMG = "background_01.png"
 BACKGROUND1 = ([0, 0, 2100, 600])
