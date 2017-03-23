@@ -41,14 +41,17 @@ class Player(pg.sprite.Sprite):
         self.image = self.standing_frame[0]
         self.rect = self.image.get_rect()
         self.rect.center = (153, 300)
-        self.pos = Vec2d(153, 300)
-        self.vel = Vec2d(0, 0)
-        self.acc = Vec2d(0, 0)
+        self.pos = Vector((153, 300))
+        self.vel = Vector((0, 0))
+        self.acc = Vector((0, 0))
+
 
     def update(self):
         #print("Player.update()")
         self.animate()
-        self.acc = Vec2d(0, PLAYER_GRAV)
+        self.acc = Vector((0, PLAYER_GRAV))
+
+
         keys = pg.key.get_pressed()
 
         if keys[pg.K_LEFT]:
@@ -59,13 +62,14 @@ class Player(pg.sprite.Sprite):
         # apply friction
         self.acc.x += self.vel.x * PLAYER_FRICTION
         # equations of motion
-        self.vel += self.acc
+        self.vel.x += self.acc.x
+        self.vel.y += self.acc.y
         if abs(self.vel.x) < 0.1:
             self.vel.x = 0
-        self.pos += self.vel + 0.5 * self.acc
+        self.pos.x += self.vel.x + 0.5 * self.acc.x
+        self.pos.y += self.vel.y + 0.5 * self.acc.y
 
-        self.rect.midbottom = self.pos
-
+        self.rect.midbottom = self.pos.getP()
 
     def load_images(self):
         #print("Player.load_images()")
