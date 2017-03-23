@@ -73,8 +73,12 @@ class Level_1(Level):
         self.background.set_colorkey(WHITE)
         self.level_limit = -2500
 
+    #    level_one_list = []
+
+
         for platform in LEVEL_ONE:
             Platform(self.game, platform[0], platform[1], platform[2])
+     #       level_one_list.append(platform)
 
 class Level_2(Level):
 
@@ -93,4 +97,3 @@ class Level_2(Level):
 
         for platform in LEVEL_TWO:
             Platform(self.game, platform[0], platform[1], platform[2])
-
