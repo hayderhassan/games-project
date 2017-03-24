@@ -138,6 +138,20 @@ class Player(pg.sprite.Sprite):
 
         self.mask = pg.mask.from_surface(self.image)
 
+class Coin(pg.sprite.Sprite):
+    def __init__(self, game, picture, x, y):
+        self._layer = PLATFORM_LAYER
+        self.dir = path.dirname(__file__)
+        img_dir = path.join(self.dir, "img")
+        self.coin = Spritesheet(path.join(img_dir, COIN))
+        self.groups = game.all_sprites, game.coins
+        pg.sprite.Sprite.__init__(self, self.groups)
+        self.game = game
+        self.image = self.coin.get_image(COIN_ICON, 8)
+        self.image.set_colorkey(BLACK)
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
 
 class Platform(pg.sprite.Sprite):
     def __init__(self, game, picture, x, y):

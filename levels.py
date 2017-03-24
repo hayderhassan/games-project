@@ -6,6 +6,7 @@ import os
 from settings import *
 from sprites import *
 from os import path
+from collisions import *
 
 class Level():
     def __init__(self, game, player, sprites):
@@ -44,13 +45,15 @@ class Level():
 
     def shift_world(self, shift_x):
         # Scroll screen when player moves left/right
-
         # Keep track of the shift amount
         self.world_shift += shift_x
 
         # Go through all the sprite lists and shift
         for platform in self.all_sprites:
             platform.rect.x += shift_x
+
+        for coin in self.all_sprites:
+            coin.rect.x += shift_x
 
         if shift_x < 0:
             self.game.score += 1
@@ -73,11 +76,15 @@ class Level_1(Level):
         self.background.set_colorkey(WHITE)
         self.level_limit = -2500
 
+
     #    level_one_list = []
 
 
         for platform in LEVEL_ONE:
             Platform(self.game, platform[0], platform[1], platform[2])
+
+        Coin(self.game, "coin.png", (800 / 2) + 232, (500 / 2) + 10)
+        Coin(self.game, "coin.png", (800 / 2) + 132, (500 / 2) + 10)
      #       level_one_list.append(platform)
 
 class Level_2(Level):

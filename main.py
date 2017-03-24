@@ -10,10 +10,12 @@ except ImportError:
 import pygame as pg
 import random
 import os
+import webbrowser
 from settings import *
 from sprites import *
 from levels import *
 from os import path
+from collisions import *
 
 os.environ['SDL_VIDEO_CENTERED'] = '1'
 
@@ -33,6 +35,7 @@ class Game:
         self.home_screen = False
         self.game_over_screen = False
         self.score = 0
+        self.coins = 0
         self.lives = 3
         self.level_list = []
 
@@ -50,6 +53,16 @@ class Game:
         self.buttons = Spritesheet(path.join(img_dir, BUTTON_IMAGES))
         self.yellowButton1 = self.buttons.get_image(YELLOW_BUTTON1, 1)
         self.yellowButton1.set_colorkey(BLACK)
+
+        #Load coin
+        self.coin_icon = Spritesheet(path.join(img_dir, COIN))
+        self.coin = self.coin_icon.get_image(COIN_ICON, 4)
+        self.coin.set_colorkey(BLACK)
+
+        # Load Twitter Icon
+        self.twitter_icon = Spritesheet(path.join(img_dir, TWITTER_ICON))
+        self.twitter = self.twitter_icon.get_image(TWITTER_ICON1, 2)
+        self.twitter.set_colorkey(BLACK)
 
         # Load fonts
         font_dir = path.join(self.dir, "fonts")
@@ -71,6 +84,7 @@ class Game:
         self.game_over_screen = False
         self.all_sprites = pg.sprite.LayeredUpdates()
         self.platforms = pg.sprite.Group()
+        self.coins = pg.sprite.Group()
         self.player = Player(self)
         self.all_sprites.add(self.player)
 
@@ -115,11 +129,15 @@ class Game:
         # Game Loop - Update
         #self.all_sprites.update()
         self.current_level.update()
-        #
 
         # Check if player hits a platform, only if falling
         if self.player.vel.y > 0:
             hits = pg.sprite.spritecollide(self.player, self.platforms, False)
+            hits_coins = pg.sprite.spritecollide(self.player, self.coins, False)
+
+            if hits_coins:
+                print("hit!")
+
             if hits:
                 self.player.pos.y = hits[0].rect.top
                 self.player.vel.y = 0
@@ -177,7 +195,6 @@ class Game:
             shift = 300 - self.player.pos.x
             self.player.pos.x = 300
             self.current_level.shift_world(shift)
-
 
         # If the player gets to the end of the level, go to the next level
         current_position = self.player.rect.x + self.current_level.world_shift
@@ -298,6 +315,7 @@ class Game:
             play_button = (x >= 300 and x <= 488) and (y >= 340 and y <= 390)
             home_button = (x >= 300 and x <= 488) and (y >= 340 and y <= 390)
             exit_button = (x >= 300 and x <= 488) and (y >= 400 and y <= 450)
+            twitter_button = (x >= 360 and x <= 488) and (y >= 200 and y <= 328)
 
             for event in pg.event.get():
                 if event.type == pg.QUIT:
@@ -324,6 +342,10 @@ class Game:
                         self.game_over_screen = False
                         waiting = False
                         self.back_to_home = True
+
+                    if twitter_button:
+                        webbrowser.open('https://twitter.com/intent/tweet?text=' + 'I just got ' + str(self.score)
+                                        + ' points in Platform Game. See if you can beat it!')
 
                     if exit_button:
                         self.lives = 0
@@ -372,8 +394,8 @@ class Game:
 
         self.screen.fill(BG_COLOUR)
         self.draw_text("GAME OVER", 50, WHITE, WIDTH / 2, (HEIGHT / 4) - 40)
-        self.draw_text("Score: " + str(self.score), 22, WHITE, WIDTH / 2, (HEIGHT / 3) + 50)
-
+        self.draw_text("Score: " + str(self.score), 22, WHITE, (WIDTH / 2) - 5, (HEIGHT / 3))
+        self.screen.blit(self.twitter, (360, 200))
         self.draw_button("Play Again", 300, 280)
         self.draw_button("Home", 300, 340)
         self.draw_button("Exit", 300, 400)
