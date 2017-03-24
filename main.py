@@ -345,7 +345,7 @@ class Game:
 
                     if twitter_button:
                         webbrowser.open('https://twitter.com/intent/tweet?text=' + 'I just got ' + str(self.score)
-                                        + ' points in Platform Game. See if you can beat it!')
+                                        + ' points in Alien Runner. See if you can beat it!')
 
                     if exit_button:
                         self.lives = 0
