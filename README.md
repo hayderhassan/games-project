@@ -18,3 +18,14 @@ During gameplay, the game can be paused at any time by pressing the "P" button. 
 The game will keep a record of the high score which will be displayed on the home screen, during gameplay and on the game over screen.
 
 The game will be made up of 5 levels. After reaching a certain distance, the level will end and the game will continue to the next level. Once the user completes all levels, they will be shown the game over screen congratulating them on completing the game.
+
+===============
+Setup
+
+1) Make sure you have pygame and SimpleGui installed:
+    sudo apt-get install python-pygame
+    sudo easy_install simplegui
+  
+2) Run main.py
+
+3) Enjoy!
