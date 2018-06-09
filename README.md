@@ -22,11 +22,13 @@ The game will be made up of 5 levels. After reaching a certain distance, the lev
 <hr />
 
 <b>Setup</b>
-
-1) Make sure you have pygame and SimpleGui installed:
-    sudo apt-get install python-pygame
-    sudo easy_install simplegui
-  
-2) Run main.py
-
-3) Enjoy!
+<ol>
+    <li>Make sure you have pygame and SimpleGui installed:
+<ul>
+    <li>sudo apt-get install python-pygame</li>
+    <li>sudo easy_install simplegui</li>
+</ul>  
+    </li>
+    <li>Run main.py</li>
+    <li>Enjoy!</li>
+</ol>
