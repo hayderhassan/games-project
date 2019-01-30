@@ -1,4 +1,7 @@
+My first year Python Games group project for which I received an A.
+
 # games-project
+
 PYTHON GAMES PROJECT
 
 This is a project to build a 2D platform scroller game in Python. This game will be modelled on the Mario games.
